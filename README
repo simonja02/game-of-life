@@ -1,7 +1,0 @@
-Game of Life
-
-This is another implementation of the famous Game of Life.
-
-The core will be written in C and will be designed in such a way that it can be used with two different views with minimal changes.
-One view will display the Game of Life on a computer screen using the GTK libraries.
-The second view will come later and it, combined with the core, will be executed on an AVR microcontroller to control an LED matrix.
