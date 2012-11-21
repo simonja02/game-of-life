@@ -9,6 +9,7 @@ typedef struct {
 } Cell;
 
 // FUNCTION PROTOTYPES
+Cell newBlankCell(unsigned int x, unsigned int y);
 void setAlive ( Cell );
 void setDead ( Cell );
 void addNeighbour ( Cell );

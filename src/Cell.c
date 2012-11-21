@@ -1,5 +1,10 @@
 #include "Cell.h"
 
+Cell newBlankCell(unsigned int x, unsigned int y) {
+    Cell c = { x, y, 0, 0 };
+    return c;
+}
+
 void setAlive ( Cell c ) {
     c.alive = 1;
 }
