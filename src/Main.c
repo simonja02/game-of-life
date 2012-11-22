@@ -5,7 +5,7 @@ int main( void ) {
     createMap(map);
 
     time_t delay = 1;
-
+/*
     // TEST CASES: Oscillator in top left
     bringToLife(map, 2, 2);
     bringToLife(map, 2, 3);
@@ -33,7 +33,8 @@ int main( void ) {
     bringToLife(map, 6, 3);
     bringToLife(map, 8, 3);
     bringToLife(map, 7, 4); 
-
+*/
+    importMapFromFile(map, "testmap.map");
     int i;
     int j;
     for (i = 0; i < MAP_SIZE_X; i++) {
@@ -41,7 +42,7 @@ int main( void ) {
             nextGen( getCellPointer(map, i, j) ); 
         }
     }
-
+    exportMapToFile(map, "testmap.map");
     exportMapToConsole(map);
     sleep(delay); 
 
