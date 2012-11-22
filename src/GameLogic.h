@@ -1,3 +1,5 @@
+#ifndef GAMELOGIC_H
+#define GAMLOGIC_H
 #include<stdio.h> // Debugging
 #include "Cell.h"
 #include "CellMap.h"
@@ -11,3 +13,4 @@ void nextGeneration(Cell [][MAP_SIZE_Y]);
 
 char bringToLife(Cell [][MAP_SIZE_Y], unsigned int, unsigned int);
 char killCell(Cell [][MAP_SIZE_Y], unsigned int, unsigned int);
+#endif
