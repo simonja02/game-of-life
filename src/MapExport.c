@@ -13,7 +13,7 @@ void exportMapToConsole(Cell map[][MAP_SIZE_Y]) {
     printf("---------------------------------------\n");
     for (i = 0; i < MAP_SIZE_X; i++) {
         for (j = 0; j < MAP_SIZE_Y; j++) {
-            printf("%d ", map[i][j].alive); 
+            printf("%d [%d] | ", map[i][j].alive, map[i][j].neighbours); 
         }
         printf("\n");
     }
