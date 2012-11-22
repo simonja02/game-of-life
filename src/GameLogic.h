@@ -1,5 +1,5 @@
 #ifndef GAMELOGIC_H
-#define GAMLOGIC_H
+#define GAMELOGIC_H
 #include<stdio.h> // Debugging
 #include "Cell.h"
 #include "CellMap.h"
