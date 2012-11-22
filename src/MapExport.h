@@ -6,6 +6,6 @@
 
 // FUNCTION PROTOTYPES
 void exportMapToConsole(Cell [][MAP_SIZE_Y]);
-void exportMapToFile(Cell [][MAP_SIZE_Y], char*);
+int exportMapToFile(Cell [][MAP_SIZE_Y], char*);
 
 #endif

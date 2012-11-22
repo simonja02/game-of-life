@@ -21,9 +21,14 @@ void exportMapToConsole(Cell map[][MAP_SIZE_Y]) {
     printf("---------------------------------------\n");
 }
 
-void exportMapToFile(Cell map[][MAP_SIZE_Y], char* filename) {
+int exportMapToFile(Cell map[][MAP_SIZE_Y], char* filename) {
     // TODO: Add verification that file was opened, adequate permissions
     FILE* output = fopen(filename, "w");
+
+    if (output == 0) {
+        printf("Error opening file to export map data\n");
+        return -1;
+    }
 
     // File Format Description
     // (only includes cells to initialize as Alive)
@@ -46,4 +51,5 @@ void exportMapToFile(Cell map[][MAP_SIZE_Y], char* filename) {
     }
 
     fclose(output);
+    return 1;
 }
