@@ -26,7 +26,11 @@ int importMapFromFile(Cell map[][MAP_SIZE_Y], char* filename) {
    
     int x, y; 
     while (fscanf(input, "%d %d\n", &x, &y) != EOF) {
-        bringToLife(map, x, y);
+        // Ensure cell isn't already alive
+        Cell* c = getCellPointer(map, x, y);
+        if (!(*c).nextGenAlive) {
+            bringToLife(map, x, y);
+        }
     } 
     fclose(input);
     return 0;

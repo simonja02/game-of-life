@@ -61,6 +61,10 @@ char bringToLife(Cell map[][MAP_SIZE_Y], unsigned int x, unsigned int y) {
     // TODO: Refactor and combine bringToLife(...) and killCell(...)
     // Set the cell's Alive status
     Cell* c = getCellPointer(map, x, y);
+
+    if ((*c).alive) {
+        return 0;
+    }
     setAlive(c);
 
     // 'Notify' the neighbouring cells
@@ -75,6 +79,7 @@ char bringToLife(Cell map[][MAP_SIZE_Y], unsigned int x, unsigned int y) {
             } 
         }
     }
+    return 1;
 }
 
 char killCell(Cell map[][MAP_SIZE_Y], unsigned int x, unsigned int y) {
