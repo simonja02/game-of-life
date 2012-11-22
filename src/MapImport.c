@@ -7,7 +7,6 @@
 #include "GameLogic.h"
 
 int importMapFromFile(Cell map[][MAP_SIZE_Y], char* filename) {
-    // TODO: Add verification that file exists, read permission
     FILE* input = fopen(filename, "r");
 
     createMap(map); 

@@ -6,6 +6,7 @@ Cell newBlankCell(unsigned int x, unsigned int y) {
 }
 
 void nextGen( Cell *c ) {
+    // Update the cell to use the next generation's data
     (*c).alive = (*c).nextGenAlive;
     (*c).neighbours = (*c).nextGenNeighbours;
 }

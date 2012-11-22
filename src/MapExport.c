@@ -22,7 +22,6 @@ void exportMapToConsole(Cell map[][MAP_SIZE_Y]) {
 }
 
 int exportMapToFile(Cell map[][MAP_SIZE_Y], char* filename) {
-    // TODO: Add verification that file was opened, adequate permissions
     FILE* output = fopen(filename, "w");
 
     if (output == 0) {

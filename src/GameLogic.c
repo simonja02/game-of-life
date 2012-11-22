@@ -7,7 +7,7 @@ unsigned char doesNeighbourExist (Cell c, int dx, int dy) {
         return 0;
     } else if ((c.y + dy < 0) || (c.y + dy > MAP_SIZE_Y)) {
         // y out of bounds
-        printf("y out of bounds; %d + %d = %d\n", c.y, dy, c.y + dy);
+        //printf("y out of bounds; %d + %d = %d\n", c.y, dy, c.y + dy);
         return 0;
     }
     return 1;
