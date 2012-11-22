@@ -19,6 +19,21 @@ int main( void ) {
     bringToLife(map, 4, 13);
     bringToLife(map, 5, 13);
 
+    // Toad
+    bringToLife(map, 12, 2);
+    bringToLife(map, 13, 2);
+    bringToLife(map, 14, 2);
+    bringToLife(map, 13, 3);
+    bringToLife(map, 14, 3);
+    bringToLife(map, 15, 3);
+
+    // Boat
+    bringToLife(map, 6, 2);
+    bringToLife(map, 7, 2);
+    bringToLife(map, 6, 3);
+    bringToLife(map, 8, 3);
+    bringToLife(map, 7, 4); 
+
     int i;
     int j;
     for (i = 0; i < MAP_SIZE_X; i++) {
