@@ -1,6 +1,14 @@
 #include "Main.h"
 
-int main( void ) {
+int main( int argc, char* argv[] ) {
+    if (argc < 2) {
+        printf("No map selected!\n");
+        printf("Usage: ./gol filename\n");
+        return 0;
+    }
+
+    char* filename = argv[1];
+
     Cell map[MAP_SIZE_X][MAP_SIZE_Y];
     createMap(map);
 
@@ -34,7 +42,7 @@ int main( void ) {
     bringToLife(map, 8, 3);
     bringToLife(map, 7, 4); 
 */
-    importMapFromFile(map, "testmap.map");
+    importMapFromFile(map, filename);
     int i;
     int j;
     for (i = 0; i < MAP_SIZE_X; i++) {
@@ -42,7 +50,7 @@ int main( void ) {
             nextGen( getCellPointer(map, i, j) ); 
         }
     }
-    exportMapToFile(map, "testmap.map");
+    //exportMapToFile(map, "testmap.map");
     exportMapToConsole(map);
     sleep(delay); 
 
