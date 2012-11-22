@@ -1,27 +1,32 @@
 #include "Cell.h"
 
 Cell newBlankCell(unsigned int x, unsigned int y) {
-    Cell c = { x, y, 0, 0 };
+    Cell c = { x, y, 0, 0, 0, 0 };
     return c;
 }
 
+void nextGen( Cell *c ) {
+    (*c).alive = (*c).nextGenAlive;
+    (*c).neighbours = (*c).nextGenNeighbours;
+}
+
 void setAlive ( Cell *c ) {
-    (*c).alive = 1;
+    (*c).nextGenAlive = 1;
 }
 
 void setDead ( Cell *c ) {
-    (*c).alive = 0;
+    (*c).nextGenAlive = 0;
 }
 
 void addNeighbour ( Cell *c ) {
-    (*c).neighbours++;
+    (*c).nextGenNeighbours++;
 }
 
 void removeNeighbour ( Cell *c ) {
     if ((*c).neighbours >= 1) {
-        (*c).neighbours--;
+        (*c).nextGenNeighbours--;
     } else {
-        (*c).neighbours = 0;
+        (*c).nextGenNeighbours = 0;
     }
 }
     
