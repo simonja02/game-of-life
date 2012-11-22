@@ -1,10 +1,4 @@
-#include<stdio.h>
-#include<time.h>
 #include "Main.h"
-#include "Cell.h"
-#include "CellMap.h"
-#include "MapExport.h"
-#include "GameLogic.h"
 
 int main( void ) {
     Cell map[MAP_SIZE_X][MAP_SIZE_Y];
