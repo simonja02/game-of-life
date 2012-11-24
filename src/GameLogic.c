@@ -20,9 +20,9 @@ void nextGeneration(Cell map[][MAP_SIZE_Y]) {
     for (i = 0; i < MAP_SIZE_X; i++) {
         for (j = 0; j < MAP_SIZE_Y; j++) {
             if (checkForDeath(map[i][j])) { 
-                changeAliveStatus(map, 0, i, j);
+                changeAliveStatus(map, DEAD, i, j);
             } else if (checkForBirth(map[i][j])) {
-                changeAliveStatus(map, 1, i, j);
+                changeAliveStatus(map, ALIVE, i, j);
             }    
         }
     }
@@ -62,12 +62,12 @@ char changeAliveStatus(Cell map[][MAP_SIZE_Y], unsigned int newStatus, unsigned 
     // Set the cell's Alive status
     Cell* c = getCellPointer(map, x, y);
 
-    if ((newStatus == 1 && (*c).alive) || (newStatus == 0 && !(*c).alive)) {
+    if ((newStatus == ALIVE && (*c).alive) || (newStatus == DEAD && !(*c).alive)) {
         // Trying to set cell to what it already is
         return 0;
     }
 
-    if (newStatus == 1) {
+    if (newStatus == ALIVE) {
         setAlive(c);
     } else {
         setDead(c);
@@ -81,7 +81,7 @@ char changeAliveStatus(Cell map[][MAP_SIZE_Y], unsigned int newStatus, unsigned 
         for (j=-1; j<2; j++) {
             if (doesNeighbourExist(*c, i, j) && !(i == 0 && j == 0)) {
                 Cell* n = getCellPointer(map, (*c).x + i, (*c).y + j);
-                if (newStatus == 1) {                    
+                if (newStatus == ALIVE) {                    
                     addNeighbour(n);
                 } else {
                     removeNeighbour(n);

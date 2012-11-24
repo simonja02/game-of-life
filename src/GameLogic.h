@@ -3,6 +3,7 @@
 #include<stdio.h> // Debugging
 #include "Cell.h"
 #include "CellMap.h"
+#include "Main.h"
 
 unsigned char doesNeighbourExist(Cell, int, int);
 unsigned char checkForDeath(Cell);

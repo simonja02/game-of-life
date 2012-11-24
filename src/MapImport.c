@@ -5,6 +5,7 @@
 #include "CellMap.h"
 #include "Cell.h"
 #include "GameLogic.h"
+#include "Main.h"
 
 int importMapFromFile(Cell map[][MAP_SIZE_Y], char* filename) {
     FILE* input = fopen(filename, "r");
@@ -29,7 +30,7 @@ int importMapFromFile(Cell map[][MAP_SIZE_Y], char* filename) {
         // Ensure cell isn't already alive
         Cell* c = getCellPointer(map, x, y);
         if (!(*c).nextGenAlive) {
-            changeAliveStatus(map, 1, x, y);
+            changeAliveStatus(map, ALIVE, x, y);
         }
     } 
     fclose(input);

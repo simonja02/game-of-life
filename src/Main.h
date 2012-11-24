@@ -8,6 +8,9 @@
 #include "MapExport.h"
 #include "GameLogic.h"
 
+#define ALIVE 1
+#define DEAD 0
+
 // FUNCTION PROTOTYPES
 unsigned char doesNeighbourExist(Cell, int, int);
 #endif
