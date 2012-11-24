@@ -11,6 +11,5 @@ unsigned char checkForStatusQuo(Cell);
 
 void nextGeneration(Cell [][MAP_SIZE_Y]); 
 
-char bringToLife(Cell [][MAP_SIZE_Y], unsigned int, unsigned int);
-char killCell(Cell [][MAP_SIZE_Y], unsigned int, unsigned int);
+char changeAliveStatus(Cell [][MAP_SIZE_Y], unsigned int, unsigned int, unsigned int);
 #endif

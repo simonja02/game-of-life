@@ -29,7 +29,7 @@ int importMapFromFile(Cell map[][MAP_SIZE_Y], char* filename) {
         // Ensure cell isn't already alive
         Cell* c = getCellPointer(map, x, y);
         if (!(*c).nextGenAlive) {
-            bringToLife(map, x, y);
+            changeAliveStatus(map, 1, x, y);
         }
     } 
     fclose(input);

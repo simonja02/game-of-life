@@ -20,9 +20,9 @@ void nextGeneration(Cell map[][MAP_SIZE_Y]) {
     for (i = 0; i < MAP_SIZE_X; i++) {
         for (j = 0; j < MAP_SIZE_Y; j++) {
             if (checkForDeath(map[i][j])) { 
-                killCell(map, i, j);
+                changeAliveStatus(map, 0, i, j);
             } else if (checkForBirth(map[i][j])) {
-                bringToLife(map, i, j);
+                changeAliveStatus(map, 1, i, j);
             }    
         }
     }
@@ -57,15 +57,21 @@ unsigned char checkForStatusQuo(Cell c) {
     return 0;
 }
 
-char bringToLife(Cell map[][MAP_SIZE_Y], unsigned int x, unsigned int y) {
+char changeAliveStatus(Cell map[][MAP_SIZE_Y], unsigned int newStatus, unsigned int x, unsigned int y) {
     // TODO: Refactor and combine bringToLife(...) and killCell(...)
     // Set the cell's Alive status
     Cell* c = getCellPointer(map, x, y);
 
-    if ((*c).alive) {
+    if ((newStatus == 1 && (*c).alive) || (newStatus == 0 && !(*c).alive)) {
+        // Trying to set cell to what it already is
         return 0;
     }
-    setAlive(c);
+
+    if (newStatus == 1) {
+        setAlive(c);
+    } else {
+        setDead(c);
+    }
 
     // 'Notify' the neighbouring cells
     int i;
@@ -75,29 +81,13 @@ char bringToLife(Cell map[][MAP_SIZE_Y], unsigned int x, unsigned int y) {
         for (j=-1; j<2; j++) {
             if (doesNeighbourExist(*c, i, j) && !(i == 0 && j == 0)) {
                 Cell* n = getCellPointer(map, (*c).x + i, (*c).y + j);
-                addNeighbour(n);
+                if (newStatus == 1) {                    
+                    addNeighbour(n);
+                } else {
+                    removeNeighbour(n);
+                }
             } 
         }
     }
     return 1;
-}
-
-char killCell(Cell map[][MAP_SIZE_Y], unsigned int x, unsigned int y) {
-    // TODO: Refactor and combine this with bringToLife(...)
-    // Set the cell's Alive status
-    Cell* c = getCellPointer(map, x, y);
-    setDead(c);
-
-    // 'Notify' the neighbouring cells
-    int i;
-    int j;
-  
-    for (i=-1; i<2; i++) {
-        for (j=-1; j<2; j++) {
-            if (doesNeighbourExist(*c, i, j) && !(i == 0 && j == 0)) {
-                Cell* n = getCellPointer(map, (*c).x + i, (*c).y + j);
-                removeNeighbour(n);
-            } 
-        }
-    }
 }
