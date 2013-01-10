@@ -12,5 +12,5 @@
 #define DEAD 0
 
 // FUNCTION PROTOTYPES
-unsigned char doesNeighbourExist(Cell, int, int);
+//unsigned char doesNeighbourExist(Cell, int, int);
 #endif

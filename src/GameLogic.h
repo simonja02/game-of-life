@@ -5,10 +5,10 @@
 #include "CellMap.h"
 #include "Main.h"
 
-unsigned char doesNeighbourExist(Cell, int, int);
-unsigned char checkForDeath(Cell);
-unsigned char checkForBirth(Cell);
-unsigned char checkForStatusQuo(Cell);
+unsigned char doesNeighbourExist(Cell*, int, int);
+unsigned char checkForDeath(Cell*);
+unsigned char checkForBirth(Cell*);
+unsigned char checkForStatusQuo(Cell*);
 
 void nextGeneration(Cell [][MAP_SIZE_Y]); 
 
