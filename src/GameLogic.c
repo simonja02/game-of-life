@@ -14,23 +14,23 @@ unsigned char doesNeighbourExist (Cell* cPtr, int dx, int dy) {
     return 1;
 }
 
-void nextGeneration(Cell map[][MAP_SIZE_Y]) {
+void nextGeneration(GameData* data) {
     int i;
     int j;
 
     for (i = 0; i < MAP_SIZE_X; i++) {
         for (j = 0; j < MAP_SIZE_Y; j++) {
-            if (checkForDeath(getCellPointer(map, i, j))) { 
-                changeAliveStatus(map, DEAD, i, j);
-            } else if (checkForBirth(getCellPointer(map, i, j))) {
-                changeAliveStatus(map, ALIVE, i, j);
+            if (checkForDeath(getCellPointer(data->map, i, j))) { 
+                changeAliveStatus(data->map, DEAD, i, j);
+            } else if (checkForBirth(getCellPointer(data->map, i, j))) {
+                changeAliveStatus(data->map, ALIVE, i, j);
             }    
         }
     }
 
     for (i = 0; i < MAP_SIZE_X; i++) {
         for (j = 0; j < MAP_SIZE_Y; j++) {
-            nextGen( getCellPointer(map, i, j) );
+            nextGen( getCellPointer(data->map, i, j) );
         }
     }    
 }

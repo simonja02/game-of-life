@@ -7,6 +7,7 @@
 #include "CellMap.h"
 #include "MapExport.h"
 #include "GameLogic.h"
+#include "GolWindow.h"
 
 #define ALIVE 1
 #define DEAD 0

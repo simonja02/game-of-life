@@ -8,9 +8,8 @@ int main( int argc, char* argv[] ) {
     }
 
     char* filename = argv[1];
-
-    Cell map[MAP_SIZE_X][MAP_SIZE_Y];
-    createMap(map);
+    GameData gameData;
+    createMap(gameData.map);
 
     time_t delay = 1;
 /*
@@ -42,23 +41,24 @@ int main( int argc, char* argv[] ) {
     bringToLife(map, 8, 3);
     bringToLife(map, 7, 4); 
 */
-    importMapFromFile(map, filename);
+    importMapFromFile(gameData.map, filename);
     int i;
     int j;
     for (i = 0; i < MAP_SIZE_X; i++) {
         for (j = 0; j < MAP_SIZE_Y; j++) {
-            nextGen( getCellPointer(map, i, j) ); 
+            nextGen( getCellPointer(gameData.map, i, j) ); 
         }
     }
     //exportMapToFile(map, "testmap.map");
-    exportMapToConsole(map);
-    sleep(delay); 
+    exportMapToConsole(gameData.map);
+    //sleep(delay); 
 
-    while(1) {
-        nextGeneration(map);
-        exportMapToConsole(map);
+    /*while(1) {
+        nextGeneration(gameData.map);
+        exportMapToConsole(gameData.map);
         sleep(delay);
-    }
+    }*/
+    createWindow(&argc, &argv, &gameData);
 }
 
 

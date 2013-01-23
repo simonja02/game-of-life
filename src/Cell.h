@@ -14,6 +14,7 @@ typedef struct {
 Cell newBlankCell(unsigned int x, unsigned int y);
 void nextGen( Cell* );
 void setAlive ( Cell* );
+unsigned char isAlive(Cell*);
 void setDead ( Cell* );
 void addNeighbour ( Cell* );
 void removeNeighbour ( Cell* );

@@ -15,6 +15,10 @@ void setAlive ( Cell *c ) {
     (*c).nextGenAlive = 1;
 }
 
+unsigned char isAlive(Cell* c) {
+    return (*c).alive;
+}
+
 void setDead ( Cell *c ) {
     (*c).nextGenAlive = 0;
 }
