@@ -2,4 +2,4 @@
 #include "GolMapCanvas.h"
 
 void createWindow();
-void runNextGeneration(gpointer);
+gboolean runNextGeneration(gpointer);

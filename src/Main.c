@@ -11,7 +11,9 @@ int main( int argc, char* argv[] ) {
     GameData gameData;
     createMap(gameData.map);
 
-    time_t delay = 1;
+    gameData.delay_ms = 250;
+    gettimeofday(&gameData.lastGenerationTime, NULL);
+
 /*
     // TEST CASES: Oscillator in top left
     bringToLife(map, 2, 2);
