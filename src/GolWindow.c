@@ -27,11 +27,12 @@ void createWindow(int* argc, char** argv[], GameData* data) {
     gtk_widget_set_size_request(window, 205, 205);
     gtk_container_set_border_width(GTK_CONTAINER(window), 10);
     g_signal_connect(G_OBJECT(window), "destroy", G_CALLBACK(destroy), NULL);
+    data->window = window;
 
     // Add the Play / Pause control buttons
     hbxButtonBox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
     windowLayout = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-    gameData.window = windowLayout;
+    data->windowLayout = windowLayout;
 
     btnRun = gtk_button_new_with_label("Run");
     btnPause = gtk_button_new_with_label("Pause");
@@ -48,13 +49,13 @@ void createWindow(int* argc, char** argv[], GameData* data) {
     mapCanvas = gtk_drawing_area_new(); 
     createMapCanvas(mapCanvas, (gpointer) data);
     //mapCanvas = gtk_drawing_area_new();
-    gtk_container_add(GTK_CONTAINER(gameData.window), mapCanvas);
-    gtk_container_add(GTK_CONTAINER(gameData.window), hbxButtonBox);
+    gtk_container_add(GTK_CONTAINER(data->windowLayout), mapCanvas);
+    gtk_container_add(GTK_CONTAINER(data->windowLayout), hbxButtonBox);
 
-    gtk_container_add(GTK_CONTAINER(window), gameData.window);
+    gtk_container_add(GTK_CONTAINER(window), data->windowLayout);
     // Add the timeout
     g_timeout_add(5, (GSourceFunc) runNextGeneration, (gpointer) data);
-    g_timeout_add(50, (GSourceFunc) redraw, window);
+    //g_timeout_add(100, (GSourceFunc) redraw, window);
  
     // Show the window
     gtk_widget_show_all(window);
@@ -86,6 +87,7 @@ gboolean runNextGeneration(gpointer data) {
       //printf("%f\n", timediff);
       nextGeneration((GameData*) data);
       gData->lastGenerationTime = now;
+      redraw(gData->window);
     }
     return 1;
 }

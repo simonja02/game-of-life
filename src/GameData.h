@@ -14,5 +14,6 @@ typedef struct {
     struct timeval lastGenerationTime;
     Cell map[MAP_SIZE_X][MAP_SIZE_Y];
     GtkWidget* window;
+    GtkWidget* windowLayout;
 } GameData;
 #endif
