@@ -41,7 +41,7 @@ int importMapFromFile(Cell map[][MAP_SIZE_Y], char* filename) {
         } else {
           // Ensure cell isn't already alive
           Cell* c = getCellPointer(map, x, y);
-          if (!(*c).nextGenAlive) {
+          if (!c->nextGenAlive) {
               changeAliveStatus(map, ALIVE, x, y);
           }
         }

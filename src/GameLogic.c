@@ -1,12 +1,11 @@
 #include "GameLogic.h"
 
-unsigned char doesNeighbourExist (Cell* cPtr, int dx, int dy) {
-    Cell c = *cPtr;
-    if ((c.x + dx < 0) || (c.x + dx > MAP_SIZE_X)) {
+unsigned char doesNeighbourExist (Cell* c, int dx, int dy) {
+    if ((c->x + dx < 0) || (c->x + dx > MAP_SIZE_X)) {
         // X out of bounds
         printf("x out of bounds\n");
         return 0;
-    } else if ((c.y + dy < 0) || (c.y + dy > MAP_SIZE_Y)) {
+    } else if ((c->y + dy < 0) || (c->y + dy > MAP_SIZE_Y)) {
         // y out of bounds
         //printf("y out of bounds; %d + %d = %d\n", c.y, dy, c.y + dy);
         return 0;
@@ -35,27 +34,24 @@ void nextGeneration(GameData* data) {
     }    
 }
 
-unsigned char checkForDeath(Cell* cPtr) {
+unsigned char checkForDeath(Cell* c) {
     // By the rules death occurs if neighbours < 2 or > 3
-    Cell c = *cPtr;
-    if ((c.alive == 1) && (c.neighbours < 2 || c.neighbours > 3)) {
+    if ((c->alive == 1) && (c->neighbours < 2 || c->neighbours > 3)) {
         return 1;
     }
     return 0;
 }
 
-unsigned char checkForBirth(Cell* cPtr) {
+unsigned char checkForBirth(Cell* c) {
    // By the rules birth occurs if a dead cell has exactly 3 neighbours
-   Cell c = *cPtr;
-   if ((c.alive == 0) && (c.neighbours == 3)) {
+   if ((c->alive == 0) && (c->neighbours == 3)) {
        return 1;
     }
     return 0; 
 }
 
-unsigned char checkForStatusQuo(Cell* cPtr) {
-    Cell c = *cPtr;
-    if ((c.alive == 1) && (c.neighbours == 2 || c.neighbours == 3)) {
+unsigned char checkForStatusQuo(Cell* c) {
+    if ((c->alive == 1) && (c->neighbours == 2 || c->neighbours == 3)) {
         return 1;
     }
     return 0;
@@ -66,7 +62,7 @@ char changeAliveStatus(Cell map[][MAP_SIZE_Y], unsigned int newStatus, unsigned 
     // Set the cell's Alive status
     Cell* c = getCellPointer(map, x, y);
 
-    if ((newStatus == ALIVE && (*c).alive) || (newStatus == DEAD && !(*c).alive)) {
+    if ((newStatus == ALIVE && c->alive) || (newStatus == DEAD && ! c->alive)) {
         // Trying to set cell to what it already is
         return 0;
     }
@@ -84,7 +80,7 @@ char changeAliveStatus(Cell map[][MAP_SIZE_Y], unsigned int newStatus, unsigned 
     for (i=-1; i<2; i++) {
         for (j=-1; j<2; j++) {
             if (doesNeighbourExist(c, i, j) && !(i == 0 && j == 0)) {
-                Cell* n = getCellPointer(map, (*c).x + i, (*c).y + j);
+                Cell* n = getCellPointer(map, c->x + i, c->y + j);
                 if (newStatus == ALIVE) {                    
                     addNeighbour(n);
                 } else {

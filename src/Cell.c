@@ -7,31 +7,31 @@ Cell newBlankCell(unsigned int x, unsigned int y) {
 
 void nextGen( Cell *c ) {
     // Update the cell to use the next generation's data
-    (*c).alive = (*c).nextGenAlive;
-    (*c).neighbours = (*c).nextGenNeighbours;
+    c->alive = c->nextGenAlive;
+    c->neighbours = c->nextGenNeighbours;
 }
 
 void setAlive ( Cell *c ) {
-    (*c).nextGenAlive = 1;
+    c->nextGenAlive = 1;
 }
 
 unsigned char isAlive(Cell* c) {
-    return (*c).alive;
+    return c->alive;
 }
 
 void setDead ( Cell *c ) {
-    (*c).nextGenAlive = 0;
+    c->nextGenAlive = 0;
 }
 
 void addNeighbour ( Cell *c ) {
-    (*c).nextGenNeighbours++;
+    c->nextGenNeighbours++;
 }
 
 void removeNeighbour ( Cell *c ) {
-    if ((*c).neighbours >= 1) {
-        (*c).nextGenNeighbours--;
+    if (c->neighbours >= 1) {
+        c->nextGenNeighbours--;
     } else {
-        (*c).nextGenNeighbours = 0;
+        c->nextGenNeighbours = 0;
     }
 }
     

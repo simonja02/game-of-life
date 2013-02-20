@@ -1,8 +1,7 @@
 #include "CellMap.h"
 
 Cell* getCellPointer(Cell map[][MAP_SIZE_Y], unsigned int x, unsigned int y) {
-    Cell* c = &map[x][y]; 
-    return c;
+    return &map[x][y]; 
 }
 
 void createMap(Cell map[][MAP_SIZE_Y]) {
