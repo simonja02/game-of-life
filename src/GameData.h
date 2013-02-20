@@ -10,6 +10,7 @@ typedef struct {
     unsigned int xSize;
     unsigned int ySize;
     unsigned int delay_ms;
+    unsigned int isRunning;
     struct timeval lastGenerationTime;
     Cell map[MAP_SIZE_X][MAP_SIZE_Y];
     GtkWidget* window;

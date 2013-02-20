@@ -12,6 +12,7 @@ int main( int argc, char* argv[] ) {
     createMap(gameData.map);
 
     gameData.delay_ms = 250;
+    gameData.isRunning = 1;
     gettimeofday(&gameData.lastGenerationTime, NULL);
 
 /*
