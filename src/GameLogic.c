@@ -36,7 +36,7 @@ void nextGeneration(GameData* data) {
 
 unsigned char checkForDeath(Cell* c) {
     // By the rules death occurs if neighbours < 2 or > 3
-    if ((c->alive == 1) && (c->neighbours < 2 || c->neighbours > 3)) {
+    if ((isAlive(c) == 1) && (getNeighbours(c) < 2 || getNeighbours(c) > 3)) {
         return 1;
     }
     return 0;
@@ -44,14 +44,14 @@ unsigned char checkForDeath(Cell* c) {
 
 unsigned char checkForBirth(Cell* c) {
    // By the rules birth occurs if a dead cell has exactly 3 neighbours
-   if ((c->alive == 0) && (c->neighbours == 3)) {
+   if (isAlive(c) == 0 && getNeighbours(c) == 3) {
        return 1;
     }
     return 0; 
 }
 
 unsigned char checkForStatusQuo(Cell* c) {
-    if ((c->alive == 1) && (c->neighbours == 2 || c->neighbours == 3)) {
+    if ((isAlive(c) == 1 && getNeighbours(c) == 2 || getNeighbours(c) == 3)) {
         return 1;
     }
     return 0;
@@ -62,7 +62,7 @@ char changeAliveStatus(Cell map[][MAP_SIZE_Y], unsigned int newStatus, unsigned 
     // Set the cell's Alive status
     Cell* c = getCellPointer(map, x, y);
 
-    if ((newStatus == ALIVE && c->alive) || (newStatus == DEAD && ! c->alive)) {
+    if ((newStatus == ALIVE && isAlive(c) == 1) || (newStatus == DEAD && ! isAlive(c))) {
         // Trying to set cell to what it already is
         return 0;
     }

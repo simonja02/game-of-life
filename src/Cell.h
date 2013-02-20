@@ -16,6 +16,7 @@ void nextGen( Cell* );
 void setAlive ( Cell* );
 unsigned char isAlive(Cell*);
 void setDead ( Cell* );
+unsigned char getNeighbours( Cell* );
 void addNeighbour ( Cell* );
 void removeNeighbour ( Cell* );
 

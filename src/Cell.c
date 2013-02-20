@@ -23,6 +23,10 @@ void setDead ( Cell *c ) {
     c->nextGenAlive = 0;
 }
 
+unsigned char getNeighbours( Cell* c) {
+    return c->neighbours;
+}
+
 void addNeighbour ( Cell *c ) {
     c->nextGenNeighbours++;
 }
