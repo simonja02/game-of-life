@@ -1,13 +1,26 @@
 #include "Main.h"
 
 int main( int argc, char* argv[] ) {
+    int mapFromFile = 0;
+    char* filename;
+
+    printf("%s\n", argv[1]);
+
     if (argc < 2) {
         printf("No map selected!\n");
-        printf("Usage: ./gol filename\n");
+        printf("Usage: ./gol -f filename or ./gol -r\n");
         return 0;
     }
 
-    char* filename = argv[1];
+    printf("%d\n", strcmp(argv[1], "-f"));
+    int isRand = strcmp(argv[1], "-r");
+
+    if (isRand != 0) {
+      printf("wants to load from file");
+      mapFromFile = 1;
+      filename = argv[2];
+    }
+
     GameData gameData;
     createMap(gameData.map);
 
@@ -44,7 +57,11 @@ int main( int argc, char* argv[] ) {
     bringToLife(map, 8, 3);
     bringToLife(map, 7, 4); 
 */
-    importMapFromFile(gameData.map, filename);
+
+    printf("map assignment");
+    if (mapFromFile) { importMapFromFile(gameData.map, filename); }
+    else { createRandomMap(gameData.map); }
+
     int i;
     int j;
     for (i = 0; i < MAP_SIZE_X; i++) {
@@ -53,7 +70,9 @@ int main( int argc, char* argv[] ) {
         }
     }
     //exportMapToFile(map, "testmap.map");
+    printf("exporting\n");
     exportMapToConsole(gameData.map);
+    printf("done exporting\n");
     //sleep(delay); 
 
     /*while(1) {
