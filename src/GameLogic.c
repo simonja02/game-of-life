@@ -1,13 +1,13 @@
 #include "GameLogic.h"
 
 unsigned char doesNeighbourExist (Cell* c, int dx, int dy) {
-    if ((c->x + dx < 0) || (c->x + dx > MAP_SIZE_X)) {
+    if ((c->x + dx < 0) || (c->x + dx >= MAP_SIZE_X)) {
         // X out of bounds
         printf("x out of bounds\n");
         return 0;
-    } else if ((c->y + dy < 0) || (c->y + dy > MAP_SIZE_Y)) {
+    } else if ((c->y + dy < 0) || (c->y + dy >= MAP_SIZE_Y)) {
         // y out of bounds
-        //printf("y out of bounds; %d + %d = %d\n", c.y, dy, c.y + dy);
+        printf("y out of bounds\n");
         return 0;
     }
     return 1;
@@ -61,6 +61,8 @@ char changeAliveStatus(Cell map[][MAP_SIZE_Y], unsigned int newStatus, unsigned 
     // TODO: Refactor and combine bringToLife(...) and killCell(...)
     // Set the cell's Alive status
     Cell* c = getCellPointer(map, x, y);
+
+    printf("(%d, %d)\n", x, y);
 
     if ((newStatus == ALIVE && isAlive(c) == 1) || (newStatus == DEAD && ! isAlive(c))) {
         // Trying to set cell to what it already is
